@@ -107,9 +107,6 @@ Class | Method | HTTP request | Description
  - [ResultOfPageResponseOfMessageObject](docs/Model/ResultOfPageResponseOfMessageObject.md)
 
 
-## Documentation For Authorization
-
-All endpoints do not require authorization.
 
 ## Author
 

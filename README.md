@@ -69,7 +69,7 @@ $apiInstance = new DaDaPushClient\Api\DaDaPushMessageApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \DaDaPushClient\DaDaPushClientModel\MessagePushRequest(); // \DaDaPushClient\DaDaPushClientModel\MessagePushRequest | body
+$body = new \DaDaPushClient\Model\MessagePushRequest(); // \DaDaPushClient\Model\MessagePushRequest | body
 $x_channel_token = 'x_channel_token_example'; // string | see: https://www.dadapush.com/channel/list
 
 try {

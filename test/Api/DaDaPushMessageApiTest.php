@@ -28,9 +28,10 @@
 
 namespace DaDaPushClient;
 
-use \DaDaPushClient\Configuration;
-use \DaDaPushClient\ApiException;
-use \DaDaPushClient\ObjectSerializer;
+use DaDaPushClient\Configuration;
+use DaDaPushClient\Api\DaDaPushMessageApi;
+use DaDaPushClient\Model\MessagePushRequest;
+use DaDaPushClient\Model\Action;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,34 +46,6 @@ class DaDaPushMessageApiTest extends TestCase
 {
 
     /**
-     * Setup before running any test cases
-     */
-    public static function setUpBeforeClass()
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
-
-    /**
      * Test case for createMessage
      *
      * push Message to a Channel.
@@ -80,6 +53,30 @@ class DaDaPushMessageApiTest extends TestCase
      */
     public function testCreateMessage()
     {
+        $config = new Configuration();
+//        $config->setHost("http://127.0.0.1:8080");
+        $apiInstance = new DaDaPushMessageApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            $config
+        );
+
+        $actions = [
+            new Action($data = array("name" => "view", "url" => "https://www.dadapush.com/", "type" => "link"))
+        ];
+
+        $body = new MessagePushRequest($data = array("title" => "Good News!",
+            "content" => "Good News! DaDaPush releasing new version",
+            "need_push" => true,
+            "actions" => $actions
+        ));
+
+        $channel_token = 'ctb3lwO6AeiZOwqZgp8BE8980FdNgp0cp6MCf';
+
+        $result = $apiInstance->createMessage($body, $channel_token);
+        print_r($result);
+        self::assertTrue($result->getCode()==0);
     }
 
     /**
@@ -90,6 +87,20 @@ class DaDaPushMessageApiTest extends TestCase
      */
     public function testDeleteMessage()
     {
+        $config = new Configuration();
+//        $config->setHost("http://127.0.0.1:8080");
+        $apiInstance = new DaDaPushMessageApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            $config
+        );
+
+        $channel_token = 'ctb3lwO6AeiZOwqZgp8BE8980FdNgp0cp6MCf';
+        $message_id=227845;
+        $result = $apiInstance->deleteMessage($message_id, $channel_token);
+        print_r($result);
+        self::assertTrue($result->getCode()==0);
     }
 
     /**
@@ -100,6 +111,20 @@ class DaDaPushMessageApiTest extends TestCase
      */
     public function testGetMessage()
     {
+        $config = new Configuration();
+//        $config->setHost("http://127.0.0.1:8080");
+        $apiInstance = new DaDaPushMessageApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            $config
+        );
+
+        $channel_token = 'ctb3lwO6AeiZOwqZgp8BE8980FdNgp0cp6MCf';
+        $message_id=227845;
+        $result = $apiInstance->getMessage($message_id, $channel_token);
+        print_r($result);
+        self::assertTrue($result->getCode()==0);
     }
 
     /**
@@ -110,5 +135,21 @@ class DaDaPushMessageApiTest extends TestCase
      */
     public function testGetMessages()
     {
+        $config = new Configuration();
+//        $config->setHost("http://127.0.0.1:8080");
+        $apiInstance = new DaDaPushMessageApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            $config
+        );
+
+        $channel_token = 'ctb3lwO6AeiZOwqZgp8BE8980FdNgp0cp6MCf';
+        $page=1;
+        $page_size=10;
+
+        $result = $apiInstance->getMessages($page,$page_size, $channel_token);
+        print_r($result);
+        self::assertTrue($result->getCode()==0);
     }
 }

@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace DaDaPushClient\DaDaPushClientModel;
+namespace DaDaPushClient\Model;
 
 use \ArrayAccess;
 use \DaDaPushClient\ObjectSerializer;
@@ -57,7 +57,7 @@ class MessageObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'actions' => '\DaDaPushClient\DaDaPushClientModel\Action[]',
+        'actions' => '\DaDaPushClient\Model\Action[]',
         'channel_name' => 'string',
         'content' => 'string',
         'created_at' => 'string',
@@ -252,7 +252,7 @@ class MessageObject implements ModelInterface, ArrayAccess
     /**
      * Gets actions
      *
-     * @return \DaDaPushClient\DaDaPushClientModel\Action[]|null
+     * @return \DaDaPushClient\Model\Action[]|null
      */
     public function getActions()
     {
@@ -262,7 +262,7 @@ class MessageObject implements ModelInterface, ArrayAccess
     /**
      * Sets actions
      *
-     * @param \DaDaPushClient\DaDaPushClientModel\Action[]|null $actions action size range is 0,3
+     * @param \DaDaPushClient\Model\Action[]|null $actions action size range is 0,3
      *
      * @return $this
      */

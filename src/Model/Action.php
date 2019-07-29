@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace DaDaPushClient\DaDaPushClientModel;
+namespace DaDaPushClient\Model;
 
 use \ArrayAccess;
 use \DaDaPushClient\ObjectSerializer;

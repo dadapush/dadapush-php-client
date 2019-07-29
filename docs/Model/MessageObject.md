@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actions** | [**\DaDaPushClient\DaDaPushClientModel\Action[]**](Action.md) | action size range is 0,3 | [optional] 
+**actions** | [**\DaDaPushClient\Model\Action[]**](Action.md) | action size range is 0,3 | [optional] 
 **channel_name** | **string** |  | 
 **content** | **string** |  | 
 **created_at** | **string** |  | 

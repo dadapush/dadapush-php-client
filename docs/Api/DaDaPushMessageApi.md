@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createMessage
 
-> \DaDaPushClient\DaDaPushClientModel\ResultOfMessagePushResponse createMessage($body, $x_channel_token)
+> \DaDaPushClient\Model\ResultOfMessagePushResponse createMessage($body, $x_channel_token)
 
 push Message to a Channel
 
@@ -31,7 +31,7 @@ $apiInstance = new DaDaPushClient\Api\DaDaPushMessageApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \DaDaPushClient\DaDaPushClientModel\MessagePushRequest(); // \DaDaPushClient\DaDaPushClientModel\MessagePushRequest | body
+$body = new \DaDaPushClient\Model\MessagePushRequest(); // \DaDaPushClient\Model\MessagePushRequest | body
 $x_channel_token = 'x_channel_token_example'; // string | see: https://www.dadapush.com/channel/list
 
 try {
@@ -48,12 +48,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\DaDaPushClient\DaDaPushClientModel\MessagePushRequest**](../Model/MessagePushRequest.md)| body |
+ **body** | [**\DaDaPushClient\Model\MessagePushRequest**](../Model/MessagePushRequest.md)| body |
  **x_channel_token** | **string**| see: https://www.dadapush.com/channel/list | [optional]
 
 ### Return type
 
-[**\DaDaPushClient\DaDaPushClientModel\ResultOfMessagePushResponse**](../Model/ResultOfMessagePushResponse.md)
+[**\DaDaPushClient\Model\ResultOfMessagePushResponse**](../Model/ResultOfMessagePushResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ No authorization required
 
 ## deleteMessage
 
-> \DaDaPushClient\DaDaPushClientModel\Result deleteMessage($message_id, $x_channel_token)
+> \DaDaPushClient\Model\Result deleteMessage($message_id, $x_channel_token)
 
 delete a Channel Message
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\DaDaPushClient\DaDaPushClientModel\Result**](../Model/Result.md)
+[**\DaDaPushClient\Model\Result**](../Model/Result.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ No authorization required
 
 ## getMessage
 
-> \DaDaPushClient\DaDaPushClientModel\ResultOfMessageObject getMessage($message_id, $x_channel_token)
+> \DaDaPushClient\Model\ResultOfMessageObject getMessage($message_id, $x_channel_token)
 
 get a Channel Message
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\DaDaPushClient\DaDaPushClientModel\ResultOfMessageObject**](../Model/ResultOfMessageObject.md)
+[**\DaDaPushClient\Model\ResultOfMessageObject**](../Model/ResultOfMessageObject.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ No authorization required
 
 ## getMessages
 
-> \DaDaPushClient\DaDaPushClientModel\ResultOfPageResponseOfMessageObject getMessages($page, $page_size, $x_channel_token)
+> \DaDaPushClient\Model\ResultOfPageResponseOfMessageObject getMessages($page, $page_size, $x_channel_token)
 
 get Message List
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\DaDaPushClient\DaDaPushClientModel\ResultOfPageResponseOfMessageObject**](../Model/ResultOfPageResponseOfMessageObject.md)
+[**\DaDaPushClient\Model\ResultOfPageResponseOfMessageObject**](../Model/ResultOfPageResponseOfMessageObject.md)
 
 ### Authorization
 

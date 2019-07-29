@@ -29,7 +29,7 @@
 
 namespace DaDaPushClient;
 
-use DaDaPushClient\DaDaPushClientModel\ModelInterface;
+use DaDaPushClient\Model\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment

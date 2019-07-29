@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actions** | [**\DaDaPushClient\DaDaPushClientModel\Action[]**](Action.md) | action size range is 0,3 | [optional] 
+**actions** | [**\DaDaPushClient\Model\Action[]**](Action.md) | action size range is 0,3 | [optional] 
 **content** | **string** | message content | 
 **need_push** | **bool** | when value is false, will not send client push | 
 **title** | **string** | message title | 

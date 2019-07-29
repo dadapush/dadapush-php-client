@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | [**\DaDaPushClient\DaDaPushClientModel\MessageObject[]**](MessageObject.md) |  | [optional] 
+**content** | [**\DaDaPushClient\Model\MessageObject[]**](MessageObject.md) |  | [optional] 
 **total_elements** | **int** |  | [optional] 
 **total_pages** | **int** |  | [optional] 
 

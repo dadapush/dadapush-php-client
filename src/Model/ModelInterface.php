@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  DaDaPushClient\DaDaPushClientModel
+ * @package  DaDaPushClient\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace DaDaPushClient\DaDaPushClientModel;
+namespace DaDaPushClient\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package DaDaPushClient\DaDaPushClientModel
+ * @package DaDaPushClient\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

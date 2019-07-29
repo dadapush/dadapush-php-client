@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace DaDaPushClient\DaDaPushClientModel;
+namespace DaDaPushClient\Model;
 
 use \ArrayAccess;
 use \DaDaPushClient\ObjectSerializer;
@@ -57,7 +57,7 @@ class PageResponseOfMessageObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content' => '\DaDaPushClient\DaDaPushClientModel\MessageObject[]',
+        'content' => '\DaDaPushClient\Model\MessageObject[]',
         'total_elements' => 'int',
         'total_pages' => 'int'
     ];
@@ -219,7 +219,7 @@ class PageResponseOfMessageObject implements ModelInterface, ArrayAccess
     /**
      * Gets content
      *
-     * @return \DaDaPushClient\DaDaPushClientModel\MessageObject[]|null
+     * @return \DaDaPushClient\Model\MessageObject[]|null
      */
     public function getContent()
     {
@@ -229,7 +229,7 @@ class PageResponseOfMessageObject implements ModelInterface, ArrayAccess
     /**
      * Sets content
      *
-     * @param \DaDaPushClient\DaDaPushClientModel\MessageObject[]|null $content content
+     * @param \DaDaPushClient\Model\MessageObject[]|null $content content
      *
      * @return $this
      */

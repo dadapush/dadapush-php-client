@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace DaDaPushClient\DaDaPushClientModel;
+namespace DaDaPushClient\Model;
 
 use \ArrayAccess;
 use \DaDaPushClient\ObjectSerializer;
@@ -58,7 +58,7 @@ class ResultOfMessagePushResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
-        'data' => '\DaDaPushClient\DaDaPushClientModel\MessagePushResponse',
+        'data' => '\DaDaPushClient\Model\MessagePushResponse',
         'errmsg' => 'string'
     ];
 
@@ -249,7 +249,7 @@ class ResultOfMessagePushResponse implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \DaDaPushClient\DaDaPushClientModel\MessagePushResponse|null
+     * @return \DaDaPushClient\Model\MessagePushResponse|null
      */
     public function getData()
     {
@@ -259,7 +259,7 @@ class ResultOfMessagePushResponse implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \DaDaPushClient\DaDaPushClientModel\MessagePushResponse|null $data data
+     * @param \DaDaPushClient\Model\MessagePushResponse|null $data data
      *
      * @return $this
      */

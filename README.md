@@ -23,6 +23,15 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
 
 ```json
 {
+    "require": {
+        "dadapush/dadapush-php-client": "1.0.0"
+    }
+}
+```
+
+or use git repo
+```json
+{
   "repositories": [
     {
       "type": "vcs",

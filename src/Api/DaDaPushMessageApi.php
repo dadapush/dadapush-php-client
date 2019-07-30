@@ -71,16 +71,17 @@ class DaDaPushMessageApi
 
     /**
      * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $host_index (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @param Configuration $config
+     * @param HeaderSelector $selector
+     * @param int $host_index host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         ClientInterface $client = null,
         Configuration $config = null,
         HeaderSelector $selector = null,
         $host_index = 0
-    ) {
+    )
+    {
         $this->client = $client ?: new Client();
         $this->config = $config ?: new Configuration();
         $this->headerSelector = $selector ?: new HeaderSelector();
@@ -90,7 +91,7 @@ class DaDaPushMessageApi
     /**
      * Set the host index
      *
-     * @param  int Host index (required)
+     * @param int Host index (required)
      */
     public function setHostIndex($host_index)
     {
@@ -120,11 +121,11 @@ class DaDaPushMessageApi
      *
      * push Message to a Channel
      *
-     * @param  \DaDaPushClient\Model\MessagePushRequest $body body (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param \DaDaPushClient\Model\MessagePushRequest $body body (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \DaDaPushClient\Model\ResultOfMessagePushResponse
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
     public function createMessage($body, $channel_token = null)
@@ -138,11 +139,11 @@ class DaDaPushMessageApi
      *
      * push Message to a Channel
      *
-     * @param  \DaDaPushClient\Model\MessagePushRequest $body body (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param \DaDaPushClient\Model\MessagePushRequest $body body (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return array of \DaDaPushClient\Model\ResultOfMessagePushResponse, HTTP status code, HTTP response headers (array of strings)
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
     public function createMessageWithHttpInfo($body, $channel_token = null)
@@ -178,7 +179,7 @@ class DaDaPushMessageApi
             }
 
             $responseBody = $response->getBody();
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\DaDaPushClient\Model\ResultOfMessagePushResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -227,11 +228,11 @@ class DaDaPushMessageApi
      *
      * push Message to a Channel
      *
-     * @param  \DaDaPushClient\Model\MessagePushRequest $body body (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param \DaDaPushClient\Model\MessagePushRequest $body body (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function createMessageAsync($body, $channel_token = null)
     {
@@ -248,13 +249,13 @@ class DaDaPushMessageApi
      *
      * push Message to a Channel
      *
-     * @param  \DaDaPushClient\Model\MessagePushRequest $body body (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param \DaDaPushClient\Model\MessagePushRequest $body body (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function createMessageAsyncWithHttpInfo($body, $channel_token = null)
+    public function createMessageAsyncWithHttpInfo($body, $channel_token)
     {
         $returnType = '\DaDaPushClient\Model\ResultOfMessagePushResponse';
         $request = $this->createMessageRequest($body, $channel_token);
@@ -296,18 +297,23 @@ class DaDaPushMessageApi
     /**
      * Create request for operation 'createMessage'
      *
-     * @param  \DaDaPushClient\Model\MessagePushRequest $body body (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param \DaDaPushClient\Model\MessagePushRequest $body body (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Psr7\Request
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    protected function createMessageRequest($body, $channel_token = null)
+    protected function createMessageRequest($body, $channel_token)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createMessage'
+            );
+        }
+        if ($channel_token === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_token when calling createMessage'
             );
         }
 
@@ -396,11 +402,11 @@ class DaDaPushMessageApi
      *
      * delete a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \DaDaPushClient\Model\Result
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
     public function deleteMessage($message_id, $channel_token = null)
@@ -414,14 +420,14 @@ class DaDaPushMessageApi
      *
      * delete a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return array of \DaDaPushClient\Model\Result, HTTP status code, HTTP response headers (array of strings)
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
-    public function deleteMessageWithHttpInfo($message_id, $channel_token = null)
+    public function deleteMessageWithHttpInfo($message_id, $channel_token)
     {
         $request = $this->deleteMessageRequest($message_id, $channel_token);
 
@@ -454,7 +460,7 @@ class DaDaPushMessageApi
             }
 
             $responseBody = $response->getBody();
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\DaDaPushClient\Model\Result' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -503,13 +509,13 @@ class DaDaPushMessageApi
      *
      * delete a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function deleteMessageAsync($message_id, $channel_token = null)
+    public function deleteMessageAsync($message_id, $channel_token)
     {
         return $this->deleteMessageAsyncWithHttpInfo($message_id, $channel_token)
             ->then(
@@ -524,13 +530,13 @@ class DaDaPushMessageApi
      *
      * delete a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function deleteMessageAsyncWithHttpInfo($message_id, $channel_token = null)
+    public function deleteMessageAsyncWithHttpInfo($message_id, $channel_token)
     {
         $returnType = '\DaDaPushClient\Model\Result';
         $request = $this->deleteMessageRequest($message_id, $channel_token);
@@ -572,13 +578,13 @@ class DaDaPushMessageApi
     /**
      * Create request for operation 'deleteMessage'
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Psr7\Request
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    protected function deleteMessageRequest($message_id, $channel_token = null)
+    protected function deleteMessageRequest($message_id, $channel_token)
     {
         // verify the required parameter 'message_id' is set
         if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
@@ -586,7 +592,11 @@ class DaDaPushMessageApi
                 'Missing the required parameter $message_id when calling deleteMessage'
             );
         }
-
+        if ($channel_token === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_token when calling deleteMessage'
+            );
+        }
         $resourcePath = '/api/v1/message/{messageId}';
         $formParams = [];
         $queryParams = [];
@@ -677,14 +687,14 @@ class DaDaPushMessageApi
      *
      * get a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \DaDaPushClient\Model\ResultOfMessageObject
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
-    public function getMessage($message_id, $channel_token = null)
+    public function getMessage($message_id, $channel_token)
     {
         list($response) = $this->getMessageWithHttpInfo($message_id, $channel_token);
         return $response;
@@ -695,14 +705,14 @@ class DaDaPushMessageApi
      *
      * get a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return array of \DaDaPushClient\Model\ResultOfMessageObject, HTTP status code, HTTP response headers (array of strings)
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
-    public function getMessageWithHttpInfo($message_id, $channel_token = null)
+    public function getMessageWithHttpInfo($message_id, $channel_token)
     {
         $request = $this->getMessageRequest($message_id, $channel_token);
 
@@ -735,7 +745,7 @@ class DaDaPushMessageApi
             }
 
             $responseBody = $response->getBody();
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\DaDaPushClient\Model\ResultOfMessageObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -784,11 +794,11 @@ class DaDaPushMessageApi
      *
      * get a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function getMessageAsync($message_id, $channel_token = null)
     {
@@ -805,13 +815,13 @@ class DaDaPushMessageApi
      *
      * get a Channel Message
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function getMessageAsyncWithHttpInfo($message_id, $channel_token = null)
+    public function getMessageAsyncWithHttpInfo($message_id, $channel_token)
     {
         $returnType = '\DaDaPushClient\Model\ResultOfMessageObject';
         $request = $this->getMessageRequest($message_id, $channel_token);
@@ -853,18 +863,23 @@ class DaDaPushMessageApi
     /**
      * Create request for operation 'getMessage'
      *
-     * @param  int $message_id messageId (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $message_id messageId (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Psr7\Request
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    protected function getMessageRequest($message_id, $channel_token = null)
+    protected function getMessageRequest($message_id, $channel_token)
     {
         // verify the required parameter 'message_id' is set
         if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $message_id when calling getMessage'
+            );
+        }
+        if ($channel_token === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_token when calling getMessage'
             );
         }
 
@@ -958,15 +973,15 @@ class DaDaPushMessageApi
      *
      * get Message List
      *
-     * @param  int $page greater than 1 (required)
-     * @param  int $page_size range is 1,50 (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $page greater than 1 (required)
+     * @param int $page_size range is 1,50 (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \DaDaPushClient\Model\ResultOfPageResponseOfMessageObject
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
-    public function getMessages($page, $page_size, $channel_token = null)
+    public function getMessages($page, $page_size, $channel_token)
     {
         list($response) = $this->getMessagesWithHttpInfo($page, $page_size, $channel_token);
         return $response;
@@ -977,15 +992,15 @@ class DaDaPushMessageApi
      *
      * get Message List
      *
-     * @param  int $page greater than 1 (required)
-     * @param  int $page_size range is 1,50 (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $page greater than 1 (required)
+     * @param int $page_size range is 1,50 (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return array of \DaDaPushClient\Model\ResultOfPageResponseOfMessageObject, HTTP status code, HTTP response headers (array of strings)
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      * @throws \DaDaPushClient\ApiException on non-2xx response
      */
-    public function getMessagesWithHttpInfo($page, $page_size, $channel_token = null)
+    public function getMessagesWithHttpInfo($page, $page_size, $channel_token)
     {
         $request = $this->getMessagesRequest($page, $page_size, $channel_token);
 
@@ -1018,7 +1033,7 @@ class DaDaPushMessageApi
             }
 
             $responseBody = $response->getBody();
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\DaDaPushClient\Model\ResultOfPageResponseOfMessageObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -1067,14 +1082,14 @@ class DaDaPushMessageApi
      *
      * get Message List
      *
-     * @param  int $page greater than 1 (required)
-     * @param  int $page_size range is 1,50 (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $page greater than 1 (required)
+     * @param int $page_size range is 1,50 (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function getMessagesAsync($page, $page_size, $channel_token = null)
+    public function getMessagesAsync($page, $page_size, $channel_token)
     {
         return $this->getMessagesAsyncWithHttpInfo($page, $page_size, $channel_token)
             ->then(
@@ -1089,14 +1104,14 @@ class DaDaPushMessageApi
      *
      * get Message List
      *
-     * @param  int $page greater than 1 (required)
-     * @param  int $page_size range is 1,50 (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $page greater than 1 (required)
+     * @param int $page_size range is 1,50 (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function getMessagesAsyncWithHttpInfo($page, $page_size, $channel_token = null)
+    public function getMessagesAsyncWithHttpInfo($page, $page_size, $channel_token)
     {
         $returnType = '\DaDaPushClient\Model\ResultOfPageResponseOfMessageObject';
         $request = $this->getMessagesRequest($page, $page_size, $channel_token);
@@ -1138,14 +1153,14 @@ class DaDaPushMessageApi
     /**
      * Create request for operation 'getMessages'
      *
-     * @param  int $page greater than 1 (required)
-     * @param  int $page_size range is 1,50 (required)
-     * @param  string $channel_token see: https://www.dadapush.com/channel/list (optional)
+     * @param int $page greater than 1 (required)
+     * @param int $page_size range is 1,50 (required)
+     * @param string $channel_token see: https://www.dadapush.com/channel/list
      *
      * @return \GuzzleHttp\Psr7\Request
-     *@throws \InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    protected function getMessagesRequest($page, $page_size, $channel_token = null)
+    protected function getMessagesRequest($page, $page_size, $channel_token)
     {
         // verify the required parameter 'page' is set
         if ($page === null || (is_array($page) && count($page) === 0)) {
@@ -1157,6 +1172,11 @@ class DaDaPushMessageApi
         if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $page_size when calling getMessages'
+            );
+        }
+        if ($channel_token === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_token when calling getMessages'
             );
         }
 
@@ -1248,8 +1268,8 @@ class DaDaPushMessageApi
     /**
      * Create http client option
      *
-     * @throws \RuntimeException on file opening failure
      * @return array of http client options
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {
